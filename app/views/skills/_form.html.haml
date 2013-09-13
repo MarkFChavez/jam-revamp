@@ -1,0 +1,21 @@
+= form_for [@member,@skill], html: {multipart: true} do |f|
+	- unless @skill.errors.empty?
+		%p.lead= "#{pluralize(@skill.errors.size, "error")} found."
+		%ul
+			- @skill.errors.full_messages.each do |err|
+				%li
+					%span.error= err
+	%div
+		= f.label :name
+		= f.text_field :name, placeholder: "name"
+
+	%div
+		= f.label :photo
+		= f.file_field :photo
+
+	%div.top10
+		= f.submit "#{action}", class:"btn btn-large"
+		&nbsp;
+		or
+		&nbsp;
+		= link_to "Go back", members_path

@@ -5,7 +5,13 @@ JamRevamp::Application.routes.draw do
   root to: "home#index"
 
   resources :home
-  resources :members
+  resources :members do
+    resources :projects
+    resources :skills
+    resources :social_links
+  end
+
+  match '/admin' => redirect("/users/sign_in")
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

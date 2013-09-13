@@ -1,0 +1,25 @@
+= form_for [@member,@social_link], html: {multipart: true} do |f|
+	- unless @social_link.errors.empty?
+		%p.lead= "#{pluralize(@social_link.errors.size, "error")} found."
+		%ul
+			- @social_link.errors.full_messages.each do |err|
+				%li
+					%span.error= err
+	%div
+		= f.label :name
+		= f.text_field :name, placeholder: "name"
+
+	%div
+		= f.label :link
+		= f.text_field :link, placeholder: "e.g http://www.google.com"
+
+	%div
+		= f.label :photo
+		= f.file_field :photo
+
+	%div.top10
+		= f.submit "#{action}", class:"btn btn-large"
+		&nbsp;
+		or
+		&nbsp;
+		= link_to "Go back", members_path

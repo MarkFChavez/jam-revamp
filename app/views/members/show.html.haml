@@ -1,2 +1,60 @@
-%h1 Members#show
-%p Find me in app/views/members/show.html.haml
+= page_title("Admin")
+
+%div.row-fluid
+	%div.span3
+		%div{style:"text-align:center"}
+			= g(@member, "img-circle img-polaroid", size:156)
+			%div.top20{style:"text-align:center"}
+				%p.lead= "Skills: #{@member.skills.size}"
+				%p.lead= "Social Info: #{@member.social_links.size}"
+				%p.lead= "Projects: #{@member.projects.size}"
+			%div.top20{style:"text-align:center"}
+				%h2= "As of #{@today}"
+				= link_to "Go back", members_path, class:"btn btn-large"
+	%div.span9
+		%div
+			%ul.nav.nav-tabs#membersTab
+				%li.active
+					%a{href:"#projects"} Projects
+				%li
+					%a{href:"#skills"} Skills
+				%li
+					%a{href:"#social"} Social Information
+
+			%div.tab-content
+				%div.tab-pane.active#projects
+					%div.pull-right
+						= link_to "Add new project", new_member_project_path(@member), class:"btn btn-large btn-primary"
+					- if @member.projects.empty?
+						%p.lead No projects added yet.
+					- else
+						%ul
+							- @member.projects.each do |p|
+								%li{style:"padding:10px"}
+									= p.name
+									%span= "(#{link_to('Edit', edit_member_project_path(@member, p))} | #{link_to('Remove', [@member,p], method: :delete, style:"color:#E74C3C", confirm:"Remove this project?")})".html_safe
+									%ul
+										%li= link_to p.link, p.link, target:"_blank"
+				%div.tab-pane#skills
+					%div.pull-right
+						= link_to "Add new skill", new_member_skill_path(@member), class:"btn btn-large btn-primary"
+					- if @member.skills.empty?
+						%p.lead No skills added yet.
+					- else
+						%ul
+							- @member.skills.each do |s|
+								%li{style:"padding:10px"}
+									= "#{s.name} #{image_tag s.photo.url}".html_safe 
+									%span= "(#{link_to('Edit', edit_member_skill_path(@member, s))} | #{link_to('Remove', [@member,s], method: :delete, style:"color:#E74C3C", confirm:"Remove skill?")})".html_safe
+				%div.tab-pane#social
+					%div.pull-right
+						= link_to "Add new social info", new_member_social_link_path(@member), class:"btn btn-large btn-primary"
+					- if @member.social_links.empty?
+						%p.lead No social info added yet.
+					- else
+						%ul
+							- @member.social_links.each do |s|
+								%li{style:"padding:10px"}
+									= "#{link_to s.name, s.link, target:"_blank"} #{image_tag s.photo.url}".html_safe 
+									%span= "(#{link_to('Edit', edit_member_social_link_path(@member, s))} | #{link_to('Remove', [@member,s], method: :delete, style:"color:#E74C3C", confirm:"Remove social info?")})".html_safe
+						

@@ -1,0 +1,9 @@
+= page_title("Admin")
+
+%div.row-fluid
+	%div.span12
+		%h3= "Add new skill for #{@member.name}"
+
+%div.row-fluid
+	%div.span12
+		= render "form", action:"Create"

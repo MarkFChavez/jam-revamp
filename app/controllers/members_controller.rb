@@ -10,6 +10,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @today = Time.now.strftime("%B %Y")
     respond_with @member
   end
 
@@ -55,6 +56,6 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.destroy
 
-    redirect_to members_path, notice:"Deleted member"
+    redirect_to members_path, notice:"Removed member"
   end
 end
