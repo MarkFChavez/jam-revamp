@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> <%= yield :title %> </title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<% if user_signed_in? %>
+				<div class="pull-right top10">
+					<%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-danger btn-large", confirm:"Get out?" %>
+				</div>
+			<% end %>
+			<h1 class="demo-logo"> Adminnn <small> welcome to JAM's management system </small> </h1>
+			<hr />
+		</div>
+	</div>
+
+	<% if notice %>
+		<div class="alert alert-success">
+			<span class="lead"> <%= notice %> </span>
+		</div>
+	<% end %>
+
+	<% if alert %>
+		<div class="alert alert-error">
+			<span class="lead"> <%= alert %> </span>
+		</div>
+	<% end %>
+
+	<div class="row-fluid">
+		<div class="span12">
+			<%= yield %>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
