@@ -24,7 +24,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.save
         format.html { redirect_to members_path, notice: "Saved new member." }
-        format.json { render json: @member}
+        format.json { render json: @member, status: :ok}
       else
         format.html { render :new }
         format.json { render json: @member.errors, status: :unprocessable_entity }
@@ -38,8 +38,23 @@ class MembersController < ApplicationController
   end
 
   def update
+    @member = Member.find(params[:id])
+
+    respond_to do |format|
+      if @member.update_attributes(params[:member])
+        format.html { redirect_to members_path, notice:"Updated #{@member.name}" }
+        format.json { render json: @member, status: :ok }
+      else
+        format.html { render :edit }
+        format.json { render json: @member, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
+    @member = Member.find(params[:id])
+    @member.destroy
+
+    redirect_to members_path, notice:"Deleted member"
   end
 end

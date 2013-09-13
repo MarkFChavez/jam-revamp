@@ -1,2 +1,13 @@
 = page_title("Admin")
 
+%div.row-fluid
+	%div.span12
+		%h3= "Members(#{@members.size})"
+
+%div.row-fluid
+	%div.span9
+		%div.top20
+			= render @members
+	%div.span3
+		%div.top20{style:"text-align:center"}
+			= link_to "Create new member".html_safe, new_member_path, class:"btn btn-large btn-info"

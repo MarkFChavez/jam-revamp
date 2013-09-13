@@ -18,6 +18,7 @@ gem 'cancan'
 gem 'paperclip'
 gem 'haml'
 gem 'haml-rails'
+gem 'gravatar_image_tag'
 
 # Gems used only for assets and not required
 # in production environments by default.

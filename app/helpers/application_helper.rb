@@ -8,4 +8,8 @@ module ApplicationHelper
 			end
 		end
 	end
+
+	def g(member, klazz, gravatar={})
+		gravatar_image_tag(member.email, class:klazz, gravatar: {size: gravatar[:size]})
+	end	
 end

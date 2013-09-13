@@ -1,2 +1,7 @@
-%h1 Members#edit
-%p Find me in app/views/members/edit.html.haml
+= page_title("Admin")
+
+%div.row-fluid
+	%div.span12
+		%h3= "Update #{@member.name}"
+
+		= render "form", action:"Update"

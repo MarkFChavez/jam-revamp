@@ -1,0 +1,17 @@
+
+= div_for member, class:"member-block" do
+	%div.pull-left
+		= g(member, 'img-circle', size:96)
+	%div{style:"margin-left:120px"}
+		%div
+			%p{style:"font-size:20px"}
+				%b= member.name
+				= "(#{member.email})"
+				%small= link_to "Edit", edit_member_path(member), class:"btn btn-warning btn-small" 
+				&nbsp;
+				%small= link_to "Remove", member, method: :delete, class:"btn btn-danger btn-small", confirm:"Remove #{member.name}?" 
+		%div
+			%p{style:"text-align:justify"}
+				= member.description
+
+	%div.clearfix

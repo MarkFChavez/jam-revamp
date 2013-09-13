@@ -1,0 +1,26 @@
+= form_for @member do |f|
+	- unless @member.errors.empty?
+		%p.lead= "#{pluralize(@member.errors.size, "error")} found."
+		%ul
+			- @member.errors.full_messages.each do |err|
+				%li
+					%span.error= err
+
+	%div
+		= f.label :name
+		= f.text_field :name, placeholder:"name"
+	%div
+		= f.label :email
+		= f.email_field :email, placeholder:"email"
+	%div
+		= f.label :role
+		= f.text_field :role, placeholder:"role"
+	%div
+		= f.label :description
+		= f.text_area :description, rows:3, placeholder:"description"
+	%div.top10
+		= f.submit "#{action}", class:"btn btn-large"
+		&nbsp;
+		or
+		&nbsp;
+		= link_to "Go back", members_path
