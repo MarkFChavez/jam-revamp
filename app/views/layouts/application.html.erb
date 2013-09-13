@@ -8,7 +8,16 @@
 </head>
 <body>
 
+<% if user_signed_in? %>
+	<div>
+		<div class="alert alert-success" style="text-align:center;color:#FFF;position:fixed">
+			<span> Hi <%= current_user.email %> </span>
+		</div>
+	</div>
+<% end %>
+	
 <div class="container-fluid">
+
 	<div class="row-fluid">
 		<div class="span12">
 			<% if user_signed_in? %>
