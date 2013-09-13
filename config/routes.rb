@@ -6,6 +6,7 @@ JamRevamp::Application.routes.draw do
 
   resources :home
   resources :members do
+    get :overview, on: :collection
     resources :projects
     resources :skills
     resources :social_links
