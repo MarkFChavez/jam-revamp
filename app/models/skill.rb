@@ -7,7 +7,7 @@ class Skill < ActiveRecord::Base
 
   #validations
   validates :name, :photo, presence: true
-  validates_attachment :photo, size: { in: 0..20.kilobytes }, content_type: { content_type: /image/ }
+  validates_attachment :photo, size: { in: 0..50.kilobytes }, content_type: { content_type: /image/ }
 
   def self.total_on(date)
     where("date(created_at) = ?", date).count(:id)
