@@ -24,7 +24,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to members_path, notice: "Saved new member." }
+        format.html { redirect_to @member, notice: "Saved new member." }
         format.json { render json: @member, status: :ok}
       else
         format.html { render :new }

@@ -1,0 +1,40 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'bootstrap';
+@import 'bootstrap-responsive';
+@import 'flat-ui';
+
+#main {
+	h1 {
+		text-align: center;
+		#color: #E74C3C;
+
+		small {
+			#color: #C0392B;
+		}
+	}
+}
+
+#logo {
+	background: url(<%= asset_path "bg.jpg" %>) no-repeat;
+	background-size: cover;
+	height: 500px;
+	-webkit-filter: blur(5px);
+}
+
+#footer {
+	padding: 0;
+}
+
+.front-member-block {
+	padding:20px;
+	margin-bottom: 20px;
+	border-top: 1px solid #ECF0F1;
+}
+
+.para {
+	text-align: justify;
+	text-indent: 20px;
+}

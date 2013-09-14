@@ -3,5 +3,61 @@
 
 %div.row-fluid
 	%div.span12
-		%h1 Hello World
-		%hr
+		%header#main
+			%h1.demo-logo 
+				JAM
+				%small <%= "we are your kind of developers" %>
+
+%div.row-fluid
+	%div.span12
+		%section#logo
+
+%div.row-fluid.top20
+	%div.span10.offset1
+		%div
+		- @members.each do |member|
+			%div.front-member-block
+				%div.pull-left
+					= g(member, "img-circle img-polaroid", size: 200)
+
+				%div.pull-right
+					%div
+						- member.social_links.each do |social_link|
+							%span= link_to image_tag(social_link.photo), social_link.link, target:"_blank", title: social_link.name
+
+				%div{style:"margin-left:250px"}
+					%h1
+						= member.name.upcase
+						%small= member.email
+
+					%div.top20
+						%p.para= member.description
+
+					%div.row-fluid
+						%div.span6
+							%div.top20
+								%p.lead Expertise:
+								- if member.skills.empty?
+									%p None
+								- else
+									%div.btn-toolbar
+										%div.btn-group
+											- member.skills.each do |skill|
+												%a.btn{style:"background-color:#BDC3C7;cursor:pointer",title:skill.name}
+													= image_tag(skill.photo)
+						%div.span6
+							%div.top20
+								%p.lead Projects involved with:
+								- if member.projects.empty?
+									%p None
+								- else
+									%ul
+										- member.projects.each do |project|
+											%li= link_to project.name, project.link, target:"_blank"
+
+				%div.clearfix
+				
+
+				
+		
+
