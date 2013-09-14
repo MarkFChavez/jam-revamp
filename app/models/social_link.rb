@@ -8,7 +8,7 @@ class SocialLink < ActiveRecord::Base
   #validations
   validates :name, :link, :photo, presence: true
   validates :link, url: true
-  validates_attachment :photo, content_type: { content_type: /image/ }, size: { in: 0..10.kilobytes }
+  validates_attachment :photo, content_type: { content_type: /image/ }, size: { in: 0..20.kilobytes }
 
   def to_param
   	"#{id}-#{name}".parameterize

@@ -40,11 +40,10 @@
 								- if member.skills.empty?
 									%p None
 								- else
-									%div.btn-toolbar
-										%div.btn-group
-											- member.skills.each do |skill|
-												%a.btn{style:"background-color:#BDC3C7;cursor:pointer",title:skill.name}
-													= image_tag(skill.photo)
+									%ul.unstyled
+										- member.skills.each do |skill|
+											%li{style:"display:inline;padding:3px"}
+												= image_tag(skill.photo)
 						%div.span6
 							%div.top20
 								%p.lead Projects involved with:
