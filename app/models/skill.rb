@@ -5,6 +5,9 @@ class Skill < ActiveRecord::Base
   belongs_to :member
   has_attached_file :photo, style: { small:"100x100>", medium:"200x200>", large:"300x300>" }
 
+  #scopes
+  default_scope order("created_at ASC")
+
   #validations
   validates :name, :photo, presence: true
   validates_attachment :photo, size: { in: 0..50.kilobytes }, content_type: { content_type: /image/ }

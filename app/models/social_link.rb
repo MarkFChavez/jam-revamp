@@ -5,6 +5,9 @@ class SocialLink < ActiveRecord::Base
   belongs_to :member
   has_attached_file :photo, style: { small:"100x100>", medium:"200x200>", large:"300x300>" }
 
+  #scopes
+  default_scope order("created_at ASC")
+
   #validations
   validates :name, :link, :photo, presence: true
   validates :link, url: true
