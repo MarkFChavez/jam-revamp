@@ -8,7 +8,7 @@
 				JAM
 				%small <%= "we are your kind of developers" %>
 
-%div.row-fluid
+%div.row-fluid.hidden-phone
 	%div.span12
 		%section#logo
 
@@ -20,7 +20,7 @@
 				%div.pull-left
 					= g(member, "img-circle img-polaroid")
 
-				%div.pull-right.visible-desktop
+				%div.pull-right.hidden-phone
 					%div
 						- member.social_links.each do |social_link|
 							%span= link_to image_tag(social_link.photo), social_link.link, target:"_blank", title: social_link.name
@@ -33,7 +33,7 @@
 					%div.top20
 						%p.para= member.description
 
-					%div.row-fluid
+					%div.row-fluid.hidden-phone
 						%div.span6
 							%div.top20
 								%p.lead Expertise:
