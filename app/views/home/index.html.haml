@@ -17,8 +17,8 @@
 		%div
 		- @members.each do |member|
 			%div.front-member-block
-				%div.pull-left
-					= g(member, "img-circle img-polaroid")
+		
+				= g(member, "img-circle img-polaroid pull-left hidden-phone")
 
 				%div.pull-right.hidden-phone
 					%div
@@ -33,7 +33,7 @@
 					%div.top20
 						%p.para= member.description
 
-					%div.row-fluid.hidden-phone
+					%div.row-fluid.hidden-phone	
 						%div.span6
 							%div.top20
 								%p.lead Expertise:
@@ -54,8 +54,8 @@
 										- member.projects.each do |project|
 											%li= link_to project.name, project.link, target:"_blank"
 
-				%div.clearfix
 				
+				%div.clearfix
 
 				
 		
