@@ -8,24 +8,24 @@
 				JAM
 				%small <%= "we are your kind of developers" %>
 
-%div.row-fluid.visible-desktop
+%div.row-fluid
 	%div.span12
-		%section#logo
+		%section#logo.visible-desktop
 
 %div.row-fluid.top20
 	%div.span10.offset1
 		%div
 		- @members.each do |member|
 			%div.front-member-block
-				%div.pull-left
-					= g(member, "img-circle img-polaroid", size: 200)
+				%div.pull-left.visible-desktop
+					= g(member, "img-circle img-polaroid")
 
-				%div.pull-right
+				%div.pull-right.visible-desktop
 					%div
 						- member.social_links.each do |social_link|
 							%span= link_to image_tag(social_link.photo), social_link.link, target:"_blank", title: social_link.name
 
-				%div{style:"margin-left:250px"}
+				%div
 					%h1
 						= member.name.upcase
 						%small= member.email
