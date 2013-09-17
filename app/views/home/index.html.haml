@@ -17,25 +17,23 @@
 		%div
 		- @members.each do |member|
 			%div.front-member-block
-		
-				= g(member, "img-circle img-polaroid pull-left hidden-phone")
+				%div.row-fluid
+					%div.span7
+						= g(member, "img-circle img-polaroid pull-left hidden-phone")
+						%h1
+							= member.name.upcase
+							%small= member.email
 
-				%div.pull-right.hidden-phone
-					%div
-						- member.social_links.each do |social_link|
-							%span= link_to image_tag(social_link.photo), social_link.link, target:"_blank", title: social_link.name
+						%div.top10
+							%p.para{style:"font-size:18px"}= member.description
+					%div.span5
+						%div.row-fluid
+							%div.span12
+								- member.social_links.each do |social_link|
+									%span= link_to image_tag(social_link.photo), social_link.link, target:"_blank", title: social_link.name
 
-				%div
-					%h1
-						= member.name.upcase
-						%small= member.email
-
-					%div.top10
-						%p.para= member.description
-
-					%div.row-fluid.hidden-phone	
-						%div.span6
-							%div.top20
+						%div.row-fluid.top10
+							%div.span6
 								%p.lead Expertise:
 								- if member.skills.empty?
 									%p None
@@ -44,8 +42,8 @@
 										- member.skills.each do |skill|
 											%li{style:"display:inline;padding:3px"}
 												= image_tag(skill.photo)
-						%div.span6
-							%div.top20
+
+							%div.span6
 								%p.lead Projects involved with:
 								- if member.projects.empty?
 									%p None
@@ -54,7 +52,6 @@
 										- member.projects.each do |project|
 											%li= link_to project.name, project.link, target:"_blank"
 
-				
 				%div.clearfix
 
 				
