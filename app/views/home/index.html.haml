@@ -33,7 +33,7 @@
 									%span= link_to image_tag(social_link.photo), social_link.link, target:"_blank", title: social_link.name
 
 						%div.row-fluid.top10
-							%div.span6
+							%div.span12
 								%p.lead Expertise:
 								- if member.skills.empty?
 									%p None
@@ -43,7 +43,8 @@
 											%li{style:"display:inline;padding:3px"}
 												= image_tag(skill.photo)
 
-							%div.span6
+						%div.row-fluid.top10
+							%div.span12
 								%p.lead Projects involved with:
 								- if member.projects.empty?
 									%p None
